@@ -74,3 +74,5 @@
 - Replace <account_number> and <user_name> with Account Number and User Name of the created user
 
 - Assign an AWS Managed policy called `IAMReadOnlyAccess`
+
+- Now attach both `S3FineGrainedAccess` and `GenerateAccessKeyPolicy` to the newly created IAM User
