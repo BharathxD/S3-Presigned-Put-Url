@@ -12,3 +12,7 @@
   }
 ]
 ```
+
+## Configure AWS Permissions
+
+- Create an S3 Bucket <your_bucket>
