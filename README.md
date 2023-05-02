@@ -72,3 +72,5 @@
 ```
 
 - Replace <account_number> and <user_name> with Account Number and User Name of the created user
+
+- Assign an AWS Managed policy called `IAMReadOnlyAccess`
