@@ -48,3 +48,27 @@
 }
 ```
 
+- Replace <your_bucket> with the bucket you have previously created
+
+- Create another Customer Managed Policy called `GenerateAccessKeyPolicy`
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "sid0435890",
+      "Effect": "Allow",
+      "Action": [
+        "iam:DeleteAccessKey",
+        "iam:UpdateAccessKey",
+        "iam:CreateAccessKey",
+        "iam:ListAccessKeys"
+      ],
+      "Resource": "arn:aws:iam::<account_number>:user/<user_name>"
+    }
+  ]
+}
+```
+
+- Replace <account_number> and <user_name> with Account Number and User Name of the created user
