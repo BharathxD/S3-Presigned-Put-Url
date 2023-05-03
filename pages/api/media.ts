@@ -29,7 +29,7 @@ export default async function uploadMedia(
     Expires: 10,
     ContentType: `image/${ext}}`
   }
-  const s3UploadUrl = await s3.getSignedUrl("putObject", s3Params);
+  const s3UploadUrl = await s3.getSignedUrlPromise("putObject", s3Params);
 
   res.status(200).json({ s3UploadUrl, key: Key });
 }
