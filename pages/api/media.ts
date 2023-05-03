@@ -12,10 +12,11 @@ const s3 = new S3({
 })
 
 type Data = {
-  name: string
+  s3UploadUrl: string;
+  key: string;
 }
 
-export default function handler(
+export default async function uploadMedia(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
@@ -27,5 +28,7 @@ export default function handler(
     Expires: 10,
     ContentType: `image/${ext}}`
   }
-  res.status(200).json({ name: 'John Doe' })
+  const s3UploadUrl = await s3.getSignedUrl("putObject", s3Params);
+
+  res.status(200).json({ s3UploadUrl, key: Key });
 }
