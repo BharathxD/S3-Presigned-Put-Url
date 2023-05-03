@@ -1,5 +1,7 @@
 # Presigned PUT S3 URL
 
+![Diagram](./diagram.png)
+
 ## Cors configuration
 
 ```json
