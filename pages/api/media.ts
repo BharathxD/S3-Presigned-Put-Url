@@ -27,7 +27,7 @@ export default async function uploadMedia(
     Bucket: process.env.BUCKET_NAME,
     Key,
     Expires: 10,
-    ContentType: `image/${ext}}`
+    ContentType: `image/${ext}`
   }
   const s3UploadUrl = await s3.getSignedUrlPromise("putObject", s3Params);
 
