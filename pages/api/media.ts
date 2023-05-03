@@ -4,12 +4,13 @@ import S3 from 'aws-sdk/clients/s3';
 import { randomUUID } from 'crypto';
 
 const s3 = new S3({
-  apiVersion: "2006-03-01",
-  accessKeyId: process.env.ACCESS_KEY,
-  secretAccessKey: process.env.SECRET_KEY,
   region: process.env.REGION,
-  signatureVersion: "v4"
-})
+  credentials: {
+    accessKeyId: process.env.ACCESS_KEY || "",
+    secretAccessKey: process.env.SECRET_KEY || "",
+  },
+  signatureVersion: 'v4',
+});
 
 type Data = {
   s3UploadUrl: string;
