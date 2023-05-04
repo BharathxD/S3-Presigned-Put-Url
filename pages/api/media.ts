@@ -1,16 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import S3 from 'aws-sdk/clients/s3';
 import { randomUUID } from 'crypto';
-
-const s3 = new S3({
-  region: process.env.REGION,
-  credentials: {
-    accessKeyId: process.env.ACCESS_KEY || "",
-    secretAccessKey: process.env.SECRET_KEY || "",
-  },
-  signatureVersion: 'v4',
-});
+import s3 from '@/aws/s3/s3';
 
 type Data = {
   s3UploadUrl: string;
