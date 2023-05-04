@@ -2,7 +2,7 @@ import axios from "axios";
 
 const uploadToS3 = async (file: File): Promise<string | null> => {
     if (!file || file.name === "") {
-        return null;
+        throw new Error("Invalid file");
     }
     const fileType = encodeURIComponent(file.type);
     try {
