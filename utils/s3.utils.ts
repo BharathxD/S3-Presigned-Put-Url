@@ -5,7 +5,6 @@ const uploadToS3 = async (file: File): Promise<string | null> => {
         return null;
     }
     const fileType = encodeURIComponent(file.type);
-
     try {
         const { data } = await axios.get(`/api/media?fileType=${fileType}`);
         const { s3UploadUrl, key } = data;

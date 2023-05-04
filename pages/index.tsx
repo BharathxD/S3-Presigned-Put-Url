@@ -6,15 +6,27 @@ export default function Home() {
   const [error, setError] = useState<boolean>(false);
   const fileRef = useRef<HTMLInputElement>(null);
   const handleUploadMedia = async (event: ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     setError(false);
     setKey(null);
-    event.preventDefault();
+
     const formData = new FormData(event.target);
     const file = formData.get("file") as File;
-    const key = await uploadToS3(file);
-    if (!key) setError(true);
-    setKey(key);
-    fileRef.current!.value = "";
+
+    if (!file || !file.type.includes("image")) {
+      setError(true);
+      return;
+    }
+
+    try {
+      const key = await uploadToS3(file);
+      setKey(key);
+      fileRef.current!.value = "";
+    } catch (error) {
+      console.error("Error while uploading file to S3:", error);
+      setError(true);
+    }
   };
   return (
     <Fragment>
